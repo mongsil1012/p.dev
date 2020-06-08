@@ -19,7 +19,9 @@ def kakao_sendtext(chatroom_name, text):
 
     win32api.SendMessage(hwndEdit, win32con.WM_SETTEXT, 0, text)
     SendReturn(hwndEdit)
-    time.sleep(0.5)
+    time.sleep(0.2)
+    SendESC(hwndEdit)
+    time.sleep(0.2)
 
 
 # # 엔터
@@ -27,6 +29,12 @@ def SendReturn(hwnd):
     win32api.PostMessage(hwnd, win32con.WM_KEYDOWN, win32con.VK_RETURN, 0)
     time.sleep(0.01)
     win32api.PostMessage(hwnd, win32con.WM_KEYUP, win32con.VK_RETURN, 0)
+
+# # esc
+def SendESC(hwnd):
+    win32api.PostMessage(hwnd, win32con.WM_KEYDOWN, win32con.VK_ESCAPE, 0)
+    time.sleep(0.01)
+    win32api.PostMessage(hwnd, win32con.WM_KEYUP, win32con.VK_ESCAPE, 0)
 
 
 # # 채팅방 열기
